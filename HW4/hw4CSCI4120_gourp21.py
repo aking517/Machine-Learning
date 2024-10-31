@@ -19,14 +19,14 @@ weather = pd.read_csv('C:\\Users\\andre\\Downloads\\BicycleWeather.csv', index_c
 # Define function to calculate hours of daylight
 def hours_of_daylight(date, axis=23.44, latitude=47.61):
     """Compute the hours of daylight for the given date"""
-    days = (date - datetime(2000, 12, 21)).days  # Fixed `pd.datetime` to `datetime`
+    days = (date - datetime(2000, 12, 21)).days 
     m = (1. - np.tan(np.radians(latitude))
          * np.tan(np.radians(axis) * np.cos(days * 2 * np.pi / 365.25)))
     return 24. * np.degrees(np.arccos(1 - np.clip(m, 0, 2))) / 180.
 
 # Resample the data to daily frequency and add features
 daily = counts.resample('d').sum()
-daily['Total'] = daily.sum(axis=1)  # Ensure `Total` is consistent with `y`
+daily['Total'] = daily.sum(axis=1)  
 
 # Calculate daylight hours for each day
 daily['daylight_hrs'] = list(map(hours_of_daylight, daily.index))
@@ -44,7 +44,7 @@ daily['holiday'] = daily['holiday'].fillna(0)
 
 # Set up feature matrix `x` and target `y`
 x = daily[['holiday', 'daylight_hrs'] + days]
-y = daily['Total']  # Fixed `total` to `Total`
+y = daily['Total']  
 
 # Scale features
 scaler = StandardScaler()
@@ -70,7 +70,7 @@ ridge_cv.fit(x, y)
 
 lasso_best_score = lasso_cv.best_score_
 ridge_best_score = ridge_cv.best_score_
-lasso_best_alpha = lasso_cv.best_params_['alpha']  # Corrected `_` in `best_params_`
+lasso_best_alpha = lasso_cv.best_params_['alpha']  
 ridge_best_alpha = ridge_cv.best_params_['alpha']
 
 # Print results
