@@ -19,6 +19,6 @@ The hyper parameters we used for the RandomizedSearchCV are:
 - Gamma, this is the kernel coefficient for the poly, rbf, and linear kernels.
 
 Attached below are the results from the different kernels
-<img ![Screenshot 2024-11-26 153020](https://github.com/user-attachments/assets/188a94e0-65bf-4f87-98c3-630e0b38eacd)>
+![Screenshot 2024-11-26 153020](https://github.com/user-attachments/assets/188a94e0-65bf-4f87-98c3-630e0b38eacd)
 
 
